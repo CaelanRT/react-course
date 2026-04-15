@@ -25,6 +25,7 @@ const books = [
     image:
       "https://images-na.ssl-images-amazon.com/images/I/91ENQs2KLAL._AC_UL600_SR600,400_.jpg",
     alt: "Project Hail Mary",
+    id: 1,
   },
   {
     author: "Freida McFadden",
@@ -32,26 +33,23 @@ const books = [
     image:
       "https://images-na.ssl-images-amazon.com/images/I/71LtTkRdVzL._AC_UL600_SR600,400_.jpg",
     alt: "The Dinner Party",
+    id: 2,
   },
 ];
 
+// structure - iterate over the list and for every item return the component!
+// set the key prop where you're iterating over the data and set it on what item you're returning
 const BookList = () => {
   return (
     <section className="booklist">
       {books.map((book) => {
-        return (
-          <Book
-            image={book.image}
-            title={book.title}
-            author={book.author}
-            alt={book.alt}
-          />
-        );
+        return <Book {...book} key={book.id} />;
       })}
     </section>
   );
 };
 
+// logic of rendering HTML to the screen
 const Book = (props) => {
   const { image, alt, title, author } = props;
 

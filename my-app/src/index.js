@@ -40,43 +40,29 @@ const books = [
 // structure - iterate over the list and for every item return the component!
 // set the key prop where you're iterating over the data and set it on what item you're returning
 const BookList = () => {
+  const getBook = (id) => {
+    const found = books.find((book) => book.id === id);
+    console.log(found.id);
+  };
+
   return (
     <section className="booklist">
-      <EventExamples />
       {books.map((book) => {
-        return <Book {...book} key={book.id} />;
+        return <Book {...book} key={book.id} getBook={getBook} />;
       })}
-    </section>
-  );
-};
-
-const EventExamples = () => {
-  return (
-    <section>
-      <form>
-        <h2>Typical Form</h2>
-        <input
-          type="text"
-          name="example"
-          onChange={(e) => console.log(e.target.value)}
-          style={{ margin: "1rem 0" }}
-        ></input>
-        <button onClick={() => console.log("hello world")} type="button">
-          click me
-        </button>
-      </form>
     </section>
   );
 };
 
 // logic of rendering HTML to the screen
 const Book = (props) => {
-  const { image, alt, title, author } = props;
+  const { image, alt, title, author, getBook, id } = props;
 
   return (
     <article className="book">
       <img src={image} alt={alt} />
       <h2>{title}</h2>
+      <button onClick={() => getBook(id)}>click me</button>
       <h4>{author.toUpperCase()}</h4>
       {props.children}
     </article>

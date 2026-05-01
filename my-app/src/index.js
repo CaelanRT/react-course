@@ -10,11 +10,14 @@ import Book from "./Book";
 // set the key prop where you're iterating over the data and set it on what item you're returning
 const BookList = () => {
   return (
-    <section className="booklist">
-      {books.map((book) => {
-        return <Book {...book} key={book.id} />;
-      })}
-    </section>
+    <>
+      <h1>Amazon Best Sellers</h1>
+      <section className="booklist">
+        {books.map((book, index) => {
+          return <Book {...book} key={book.id} number={index} />;
+        })}
+      </section>
+    </>
   );
 };
 

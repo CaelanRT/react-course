@@ -1,3 +1,4 @@
+// this will not increment the total on the screen because it does not trigger a rerender, we need to useState
 const ErrorExample = () => {
   let count = 0;
 

@@ -33,13 +33,16 @@ const MultipleReturnsFetchData = () => {
     return <h2>There was an error...</h2>;
   }
 
+  // you need to have this at the end because javascript is sequential this hasn't happened yet if you threw it up before the user is set and made not null
+  const { avatar_url, name, company, bio } = user;
+
   return (
     <article>
       <h2>Fetch Data </h2>
-      <img src={user.avatar_url} alt="" style={{ maxWidth: "300px" }} />
-      <h3>{user.name}</h3>
-      <h4>Works at: {user.company}</h4>
-      <p>{user.bio}</p>
+      <img src={avatar_url} alt="" style={{ maxWidth: "300px" }} />
+      <h3>{name}</h3>
+      <h4>Works at: {company}</h4>
+      <p>{bio}</p>
     </article>
   );
 };

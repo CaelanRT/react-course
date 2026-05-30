@@ -5,7 +5,7 @@ const Tours = ({ tours }) => {
   return (
     <>
       {tours.map((tour) => {
-        return <Tour />;
+        return <Tour tour={tour} key={tour.id} />;
       })}
     </>
   );
